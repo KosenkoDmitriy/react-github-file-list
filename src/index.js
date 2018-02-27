@@ -20,10 +20,10 @@ FileList.propTypes = {
 
 const FileListItem = ({ file }) => (
   <tr className="file-list-item">
-    <td><FileIcon file={file} key={0} /></td>
+    <td className="file-icon"><FileIcon file={file} key={0} /></td>
     <td><FileName file={file} key={1} /></td>
     <td><CommitMessage message={file.commit_message} /></td>
-    <td><Time time={file.updated_at} /></td>
+    <td className="updated_at"><Time time={file.updated_at} /></td>
   </tr>
 );
 FileListItem.propTypes = {
@@ -45,9 +45,7 @@ function FileIcon({ file }) {
     icon = 'fa-folder';
 
   return (
-    <span className="file-icon">
-      <i className={`fa ${icon}`} />
-    </span>
+    <i className={`fa ${icon}`} />
   );
 };
 FileIcon.propTypes = {
