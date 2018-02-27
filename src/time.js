@@ -15,4 +15,4 @@ Time.propTypes = {
   time: PropTypes.string.isRequired
 }
 
-export { Time };
+export default Time;

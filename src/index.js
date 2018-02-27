@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import './index.css';
-import { Time } from './time.js';
+import Time from './time.js';
 
 
 const FileList = ({ files }) => (
@@ -22,7 +22,9 @@ const FileListItem = ({ file }) => (
   <tr className="file-list-item">
     {getFileName(file)}
     <CommitMessage message={file.commit_message} />
-    <Time time={file.updated_at}/>
+    <td className="updated-at">
+      <Time time={file.updated_at}/>
+    </td>
   </tr>
 );
 FileListItem.propTypes = {
