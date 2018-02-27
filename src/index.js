@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import './index.css';
+import { Time } from './time.js';
+
 
 const FileList = ({ files }) => (
   <table className="file-list">
@@ -20,7 +21,8 @@ FileList.propTypes = {
 const FileListItem = ({ file }) => (
   <tr className="file-list-item">
     {getFileName(file)}
-    <CommitMessage message={file.commitMessage} />
+    <CommitMessage message={file.commit_message} />
+    <Time time={file.updated_at}/>
   </tr>
 );
 FileListItem.propTypes = {
@@ -64,21 +66,21 @@ const testFiles = [
     name: 'src',
     type: 'folder',
     updated_at: "2018-02-27 14:13:00",
-    commitMessage: 'Initial commit'
+    commit_message: 'Initial commit'
   },
   {
     id: '2',
     name: 'tests',
     type: 'folder',
     updated_at: "2018-02-27 14:13:00",
-    commitMessage: 'Initial commit'
+    commit_message: 'Initial commit'
   },
   {
     id: '3',
     name: 'README',
     type: 'file',
     updated_at: "2018-02-27 14:13:00",
-    commitMessage: 'Added a readme'
+    commit_message: 'Added a readme'
   },
 ];
 
