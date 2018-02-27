@@ -20,10 +20,20 @@ FileList.propTypes = {
 const FileListItem = ({ file }) => (
   <tr className="file-list-item">
     {getFileName(file)}
+    <CommitMessage message={file.commitMessage} />
   </tr>
 );
 FileListItem.propTypes = {
   file: PropTypes.object.isRequired
+};
+
+const CommitMessage = ({ message }) => (
+  <td className="commit-message">
+    {message}
+  </td>
+);
+CommitMessage.propTypes = {
+  message: PropTypes.object.isRequired
 };
 
 function FileIcon({ file }) {
