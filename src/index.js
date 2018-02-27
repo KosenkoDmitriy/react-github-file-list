@@ -20,11 +20,10 @@ FileList.propTypes = {
 
 const FileListItem = ({ file }) => (
   <tr className="file-list-item">
-    {getFileName(file)}
-    <CommitMessage message={file.commit_message} />
-    <td className="updated-at">
-      <Time time={file.updated_at}/>
-    </td>
+    <td><FileIcon file={file} key={0} /></td>
+    <td><FileName file={file} key={1} /></td>
+    <td><CommitMessage message={file.commit_message} /></td>
+    <td><Time time={file.updated_at} /></td>
   </tr>
 );
 FileListItem.propTypes = {
@@ -32,12 +31,12 @@ FileListItem.propTypes = {
 };
 
 const CommitMessage = ({ message }) => (
-  <td className="commit-message">
-    {message}
-  </td>
+    <span className="commit-message">
+      {message}
+    </span>
 );
 CommitMessage.propTypes = {
-  message: PropTypes.object.isRequired
+  message: PropTypes.string.isRequired
 };
 
 function FileIcon({ file }) {
@@ -46,21 +45,22 @@ function FileIcon({ file }) {
     icon = 'fa-folder';
 
   return (
-    <td className="file-icon">
+    <span className="file-icon">
       <i className={`fa ${icon}`} />
-    </td>
+    </span>
   );
 };
 FileIcon.propTypes = {
   file: PropTypes.object.isRequred
 };
 
-function getFileName(file) {
-  return [
-    <FileIcon file={file} key={0}/>,
-    <td className="file-name" key={1}>{file.name}</td>
-  ];
-}
+function FileName({ file }) {
+  return (
+    <span className="file-name">
+      {file.name}
+    </span>
+  );
+};
 
 const testFiles = [
   {
